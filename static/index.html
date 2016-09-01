@@ -16,7 +16,7 @@ $('submit').addEventListener('click', function(ev) {
         url = 'http://' + url;
     }
     var ext = $('ext').value;
-    var b64 = btoa('url');
+    var b64 = btoa(url);
     var newurl = '/do/' + b64 + '/get.' + ext;
     window.location = newurl;
 });
