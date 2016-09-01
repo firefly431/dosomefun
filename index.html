@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Personal Server</title>
+</head>
+<body>
+<h1>Personal Server</h1>
+<input type="text" placeholder="Enter URL" id="url" />
+<input type="text" placeholder="File Extension" id="ext" />
+<button id="submit">Submit</button>
+<script type="text/javascript">
+$ = document.querySelector.bind(document);
+$('submit').addEventListener('click', function(ev) {
+    var url = $('url').value;
+    var ext = $('ext').value;
+    var b64 = btoa('url');
+    var newurl = '/do/' + b64 + '/get.' + ext;
+    window.location = newurl;
+});
+</script>
+</body>
+</html>
