@@ -10,7 +10,7 @@
 <button id="submit">Submit</button>
 <script type="text/javascript">
 $ = document.getElementById.bind(document);
-$('submit').addEventListener('click', function(ev) {
+function handler(ev) {
     var url = $('url').value;
     if (!url.match(/^[a-zA-Z]+:\/\//)) {
         url = 'http://' + url;
@@ -19,7 +19,16 @@ $('submit').addEventListener('click', function(ev) {
     var b64 = btoa(url);
     var newurl = '/do/' + b64 + '/get.' + ext;
     window.location = newurl;
-});
+    (ev || window.event).preventDefault();
+}
+function pressOnEnter(ev) {
+    ev = ev || window.event;
+    if ((ev.which || ev.keyCode || 0) == 13)
+        $('submit').click();
+}
+$('submit').addEventListener('click', handler);
+$('url').addEventListener('keydown', pressOnEnter);
+$('ext').addEventListener('keydown', pressOnEnter);
 </script>
 </body>
 </html>
