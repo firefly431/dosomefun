@@ -12,6 +12,9 @@
 $ = document.getElementById.bind(document);
 $('submit').addEventListener('click', function(ev) {
     var url = $('url').value;
+    if (!url.match(/^[a-zA-Z]+:\/\//)) {
+        url = 'http://' + url;
+    }
     var ext = $('ext').value;
     var b64 = btoa('url');
     var newurl = '/do/' + b64 + '/get.' + ext;
