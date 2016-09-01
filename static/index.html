@@ -16,7 +16,7 @@ function handler(ev) {
         url = 'http://' + url;
     }
     var ext = $('ext').value;
-    var b64 = btoa(url);
+    var b64 = btoa(url).replace(/\+/g, '-').replace(/\//, '_');
     var newurl = '/do/' + b64 + '/get.' + ext;
     window.location = newurl;
     (ev || window.event).preventDefault();
